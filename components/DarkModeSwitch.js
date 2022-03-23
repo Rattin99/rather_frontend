@@ -13,6 +13,7 @@ const DarkModeSwitch = () => {
             icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
             onClick={toggleColorMode}
             color={iconColor[colorMode]}
+            margin='3px'
         />
     )
 }

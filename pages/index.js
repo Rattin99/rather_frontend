@@ -1,8 +1,12 @@
 import { Box } from "@chakra-ui/react"
 import Container from "../components/Container"
 import Content from "../components/Content"
+import UploaderPage from "../components/UploaderPage";
+import { useState } from "react";
 
 export const getStaticProps = async () => {
+
+
   const data = await fetch(
     "https://jsonplaceholder.typicode.com/todos?_limit=30"
   ).then((response) => response.json());
@@ -13,13 +17,18 @@ export const getStaticProps = async () => {
 };
 
 export default function Home(props) {
+
+  
+
+ 
+
   return (
-    <div>
       <Container>
         <Box display='flex' alignItems='center' justifyContent='center' >
-          <Content data={props.data} />
+            <Content data={props.data} />
         </Box>
+        
       </Container>
-    </div>
   )
 }
+

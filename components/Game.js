@@ -1,5 +1,5 @@
-import { Box, Text,Image } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Box, Text} from "@chakra-ui/react";
+import {  useState } from "react";
 import ImageBox from "./ImageBox";
 
 const Game = ({imageArray}) => {
@@ -18,13 +18,17 @@ const Game = ({imageArray}) => {
 
 
     const HandleSelect = (e) =>{
-      const targetIndex =   e.target.attributes.index.value;
-      console.log(targetIndex)
-      const index1 = activeIndex[0];
-      const index2 = activeIndex[1];
+      
+        try{
+            const targetIndex =   e.target.attributes.index.value;
+            const index1 = activeIndex[0];
+            const index2 = activeIndex[1];
 
-      if(index1 == targetIndex) setActiveIndex([index1,getLarger(index1,index2)+1]);
-      if(index2 == targetIndex) setActiveIndex([getLarger(index1,index2)+1,index2]);
+            if(index1 == targetIndex) setActiveIndex([index1,getLarger(index1,index2)+1]);
+            if(index2 == targetIndex) setActiveIndex([getLarger(index1,index2)+1,index2]);
+        }catch(err){
+            console.log(err)
+        }
 
     }
 
@@ -38,7 +42,7 @@ const Game = ({imageArray}) => {
                {
                    imageArray.map((value,index)=>
                    isActive(index) && (
-                    <ImageBox onClick={HandleSelect}  key={index} src={value.download_url} index={index} />
+                    <ImageBox  handleselect = {HandleSelect}  key={index} src={value.download_url} index={index} />
                 )
                    )
                }

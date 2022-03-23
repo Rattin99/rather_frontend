@@ -4,7 +4,8 @@ import {
     Flex,
     Box,
     Text,
-    Input
+    Input,
+    IconButton
 } from '@chakra-ui/react'
 
 import Link from 'next/dist/client/link'
@@ -14,8 +15,15 @@ import styled from '@emotion/styled'
 
 import DarkModeSwitch from './DarkModeSwitch'
 
-const Container = ({ children }) => {
+import {SearchIcon, AddIcon} from '@chakra-ui/icons'
+
+
+
+
+const Container = ({ children, setUpload }) => {
     const { colorMode } = useColorMode()
+
+    
 
     const bgColor = {
         light: 'white',
@@ -40,6 +48,11 @@ const Container = ({ children }) => {
         transition: height .5s, line-height .5s;
         `
 
+   
+    const handleRatherClick = () => {
+        
+    }
+
     return (
         <>
             <StickyNav
@@ -60,14 +73,19 @@ const Container = ({ children }) => {
                 <Box >
                   <Link href='/' >
                     <a>
-                        <Text color={color[colorMode]} fontSize="3xl">
+                        <Text onClick={handleRatherClick} color={color[colorMode]} fontSize="3xl">
                             .rather
                         </Text>
                     </a>
                   </Link>
                 </Box>
                 <Box display='flex' alignItems='center' justifyContent='space-around'>
-                    <Input margin='0px 5px' color={color[colorMode]} placeholder='search' size='md' />
+                    <IconButton  margin='3px' icon={<SearchIcon />} color={color[colorMode]} />
+                   <Link href="/Uploader">
+                    <a >
+                        <IconButton  margin='3px' icon={<AddIcon />} color={color[colorMode]} />
+                    </a>
+                   </Link>
                     <DarkModeSwitch />
                 </Box>
                 
