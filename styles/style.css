@@ -1,3 +1,14 @@
+html {
+  min-width: 356px;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  overflow-y: hidden;
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
 #files[type="file"] {
   display: none;
 }
@@ -6,21 +17,58 @@
   font-size: 10em;
 }
 
-.result {
-  min-height: 100%;
-  max-height: auto;
-  width: 100%;
-  background-color: #272c34;
-  margin-top: 1rem;
+@media (max-width: 500px) {
+  img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.uploaderPage {
+  overflow: hidden;
+}
+
+.uplform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploads {
+  margin: 5px;
+  width: 90%;
+  height: 70vh;
+  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
 }
 
-img {
-  width: 320px;
-  height: 180px;
-  object-fit: cover;
-  padding: 0.75rem;
+.upldiv {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.uplimg {
+  object-fit: scale-down;
+  max-width: 200px;
+  max-height: 250px;
+}
+
+.caption_input {
+  margin: 5px;
+  /* background-color: #636363; */
+  background-color: #7f7f7f;
+  color: white;
+  border-radius: 0.3rem;
+}
+
+.submit_btn {
+  margin: 5px;
 }

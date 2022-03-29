@@ -1,8 +1,7 @@
 import { Box } from "@chakra-ui/react"
 import Container from "../components/Container"
 import Content from "../components/Content"
-import UploaderPage from "../components/UploaderPage";
-import { useState } from "react";
+
 
 export const getStaticProps = async () => {
 

@@ -38,7 +38,7 @@ const Game = ({imageArray}) => {
     return ( 
         <Box  display='flex' h='80vh' flexDirection='column' alignItems='center' justifyContent='space-around' >
             <Text maxH={{base:'10vh',lg:'20vh'}} fontSize={{base:'sm',lg:'md'}}  textAlign='center' >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, quam dolor aliquid deleniti laboriosam adipisci veniam dignissimos laborum, at incidunt omnis nesciunt nulla molestias ipsa neque autem? Facere, fugit inventore?</Text>
-           <Box onClick={HandleSelect} w={{lg:'70vw', base:'100vw'}} display='flex' flexDirection={{base:'column',lg:'row'}} alignItems='center' justifyContent='center'> 
+           <Box overflow='hidden' onClick={HandleSelect} w={{lg:'70vw', base:'100vw'}} display='flex' flexDirection={{base:'column',lg:'row'}} alignItems='center' justifyContent='center'> 
                {
                    imageArray.map((value,index)=>
                    isActive(index) && (

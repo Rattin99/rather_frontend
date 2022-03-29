@@ -1,8 +1,6 @@
 import Container from '../../components/Container'
 import Game from '../../components/Game';
 import { useState,useEffect } from 'react';
-import UploaderPage from '../../components/UploaderPage';
-import { Box } from '@chakra-ui/react';
 
 
 

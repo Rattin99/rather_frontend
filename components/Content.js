@@ -12,7 +12,7 @@ const Content = (props) => {
         overscroll-behavior-y: none;
         `
 
-    console.log(props.data)
+    
     return ( 
         <StyledBox h='90vh' w={{base:'80vw',lg:'40vw'}}  >
             <Posts data={props.data} />

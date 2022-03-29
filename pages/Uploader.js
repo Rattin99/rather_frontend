@@ -3,13 +3,11 @@ import UploaderPage from "../components/UploaderPage";
 import Container from "../components/Container";
 
 const Uploader = () => {
-    return ( 
+    return (     
         <Container>
-            <Box w='100vw' h='30vh' display='flex' alignItems='center'justifyContent='center' >
-                 <UploaderPage />
-            </Box>
+              <UploaderPage />
         </Container>
-     );
+      );
 }
  
 export default Uploader;

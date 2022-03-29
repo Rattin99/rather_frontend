@@ -22,15 +22,7 @@ const GlobalStyle = ({ children }) => {
             background: #ffb7b7;
             color: #fefefe;
           }
-          html {
-            min-width: 356px;
-            scroll-behavior: smooth;
-            
-          }
-          ::-webkit-scrollbar {
-            width: 0;  /* Remove scrollbar space */
-            background: transparent;  /* Optional: just make scrollbar invisible */
-        }
+          
           #__next {
             display: flex;
             flex-direction: column;
