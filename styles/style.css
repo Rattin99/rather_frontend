@@ -39,7 +39,7 @@ html {
 .uploads {
   margin: 5px;
   width: 90%;
-  height: 70vh;
+  height: 68vh;
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
@@ -71,4 +71,8 @@ html {
 
 .submit_btn {
   margin: 5px;
+  background-image: linear-gradient(to left, #7928ca, #ff0080);
+  border-radius: 0.3rem;
+  padding: 5px;
+  cursor: pointer;
 }

@@ -1,11 +1,14 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
+import { uploadFile } from "../firebase";
+import {v1 as uuid} from 'uuid';
 
 const UploaderPage = () => {
 
     const { colorMode } = useColorMode()
     const [ selectedFiles, setSelectedFiles ] = useState([]);
+    const [fa,setfa] = useState();
     const [captionArray,setCaptionArray] = useState([]);
 
     useEffect(()=>{
@@ -14,14 +17,28 @@ const UploaderPage = () => {
     
     const handleImageChange = (e) => {
 		if (e.target.files) {
-			const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
 
-			
+            const allOk = true;
+            const types = ['image/png','image/jpeg'];
+            const fA = Array.from(e.target.files);
 
-			setSelectedFiles((prevImages) => prevImages.concat(filesArray));
-			Array.from(e.target.files).map(
-				(file) => URL.revokeObjectURL(file) // avoid memory leak
-			);
+            fA.map(value =>{
+
+                if( !types.includes(value.type) ) {
+                    allOk = false;
+                }
+            })
+            
+			if(allOk){
+                const filesArray = fA.map((file) => URL.createObjectURL(file));
+                setfa(fA);
+                setSelectedFiles((prevImages) => prevImages.concat(filesArray));
+                fA.map(
+                    (file) => URL.revokeObjectURL(file) // avoid memory leak
+                );
+            }
+
+            
 		}
 	};
 
@@ -37,6 +54,21 @@ const UploaderPage = () => {
         });
         
     }
+    
+
+    const color = {
+        light: 'black',
+        dark: 'white'
+    }
+
+    const submitHandler = (e) =>{
+        e.preventDefault()
+
+        fa.map((value,index)=>{
+            uploadFile(value);
+        })
+        
+    }
 
 
     const renderPhotos = (source) => {
@@ -49,18 +81,6 @@ const UploaderPage = () => {
             )
 		});
 	};
-    
-
-    const color = {
-        light: 'black',
-        dark: 'white'
-    }
-
-    const submitHandler = (e) =>{
-
-        e.preventDefault()
-        
-    }
 
     
 
@@ -81,7 +101,7 @@ const UploaderPage = () => {
                     renderPhotos(selectedFiles)
                 }
                 </div>
-             {selectedFiles && <input className="submit_btn" type='submit' />}
+             {selectedFiles.length !=0 && <input className="submit_btn" type='submit' />}
             </form>
             
       </div>

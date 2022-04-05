@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import UploaderPage from "../components/UploaderPage";
 import Container from "../components/Container";
 
