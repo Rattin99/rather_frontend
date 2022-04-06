@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 
 
-export const uploadFile = (file) =>{
+export const uploadFile = (file,f) =>{
 
   const filename = file.name;
   const fileType = file.type;
@@ -33,7 +33,8 @@ export const uploadFile = (file) =>{
 
   uploadBytes(reference,file,metadata).then((snapshot) => {
     getDownloadURL(snapshot.ref).then((downloadURL) => {
-      console.log(downloadURL)
+      
+      f(downloadURL)
     })
   })
 

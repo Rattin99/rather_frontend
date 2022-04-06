@@ -62,11 +62,26 @@ const UploaderPage = () => {
     }
 
     const submitHandler = (e) =>{
-        e.preventDefault()
+        e.preventDefault();
+
+        const data = {
+            postid: uuid(),
+            title: 'title',
+            images: []
+        };
 
         fa.map((value,index)=>{
-            uploadFile(value);
+            uploadFile(value,(downloadURL)=>{
+                data.images[index] = {
+                    downloadURL,
+                    caption: captionArray[index] ? captionArray[index] : ' '
+                }
+            });
+
         })
+
+        console.log(data)
+        
         
     }
 
