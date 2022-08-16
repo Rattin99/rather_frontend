@@ -1,8 +1,9 @@
 import { Box, Text} from "@chakra-ui/react";
 import {  useState } from "react";
 import ImageBox from "./ImageBox";
+import eloRank from "../utils/elo";
 
-const Game = ({imageArray}) => {
+const Game = ({imageArray,postId}) => {
 
     const [activeIndex,setActiveIndex] = useState([0,1]);
 
@@ -23,9 +24,35 @@ const Game = ({imageArray}) => {
             const targetIndex =   e.target.attributes.index.value;
             const index1 = activeIndex[0];
             const index2 = activeIndex[1];
+            const l = imageArray.length - 1; 
+            if(index1 <= l && index2 <= l){
+               
+                const opIndex = (targetIndex == index1) ? index2 : index1;
 
-            if(index1 == targetIndex) setActiveIndex([index1,getLarger(index1,index2)+1]);
-            if(index2 == targetIndex) setActiveIndex([getLarger(index1,index2)+1,index2]);
+                const w = imageArray[targetIndex];
+                const l = imageArray[opIndex];
+
+                const result = eloRank(w.ranking,l.ranking);
+
+                imageArray[targetIndex].ranking = result.newWrank;
+                imageArray[opIndex].ranking = result.newLrank;
+
+                
+                if(index1 == targetIndex) setActiveIndex([index1,getLarger(index1,index2)+1]);
+                if(index2 == targetIndex) setActiveIndex([getLarger(index1,index2)+1,index2]);
+            }
+
+            if(index1 == l || index2 == l){
+                fetch(`http://localhost:5000/post/rank/${postId}`,{
+                    method: 'POST',
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({
+                        imageArray
+                    })
+                }).then(res =>{
+                    console.log(res);
+                })
+            }
         }catch(err){
             console.log(err)
         }
@@ -42,7 +69,7 @@ const Game = ({imageArray}) => {
                {
                    imageArray.map((value,index)=>
                    isActive(index) && (
-                    <ImageBox  handleselect = {HandleSelect}  key={index} src={value.download_url} index={index} />
+                    <ImageBox  handleselect = {HandleSelect}  key={index} src={value.image_url} index={index} />
                 )
                    )
                }

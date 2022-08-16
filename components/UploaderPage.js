@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
-import { uploadFile } from "../firebase";
+import { uploadFile,HandleUpload } from "../firebase";
 import {v1 as uuid} from 'uuid';
 
 const UploaderPage = () => {
@@ -64,25 +64,46 @@ const UploaderPage = () => {
     const submitHandler = (e) =>{
         e.preventDefault();
 
+        const postid = uuid();
+
         const data = {
-            postid: uuid(),
+            postid,
             title: 'title',
             images: []
         };
 
+
+        try{
+            fetch('http://localhost:5000/post',{
+                method: 'POST',
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify(data)
+            }).then(()=> console.log('request sent'))
+            
+           }catch(err){
+               console.log(err)
+           }
+
+
         fa.map((value,index)=>{
             uploadFile(value,(downloadURL)=>{
-                data.images[index] = {
-                    downloadURL,
-                    caption: captionArray[index] ? captionArray[index] : ' '
-                }
+                try{
+                    fetch(`http://localhost:5000/post/url/${postid}`,{
+                        method: 'POST',
+                        headers: {"Content-Type":"application/json"},
+                        body: JSON.stringify({
+                            postid,
+                            downloadURL,
+                            caption: captionArray[index] ? captionArray[index] : ' '
+                            })
+                    }).then((res)=> console.log(res.status))
+                    
+                   }catch(err){
+                       console.log(err)
+                   }
             });
 
         })
-
-        console.log(data)
-        
-        
     }
 
 
