@@ -8,8 +8,7 @@ const Posts = ({ data }) => {
   const [posts, setPosts] = useState(data);
   const [hasMore, setHasMore] = useState(true);
 
- 
-  console.log(data)
+
 
   
   const getMorePost = async () => {

@@ -78,7 +78,44 @@ html {
 }
 
 
+.rankedList{
+  margin: auto;
+  width: 90%;
+  height: 80vh;
+  overflow: auto;
+  
+}
+
+.ranked_item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.ranked_image{
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.rank{
+  margin: 10px;
+}
 
 
+.info_container{
+  width: 100%;
+}
+
+.info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post_visits,.post_ranked_by{
+  margin: 5px;
+}
 
 

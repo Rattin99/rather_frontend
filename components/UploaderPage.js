@@ -8,7 +8,7 @@ const UploaderPage = () => {
 
     const { colorMode } = useColorMode()
     const [ selectedFiles, setSelectedFiles ] = useState([]);
-    const [fa,setfa] = useState();
+    const [fa,setfa] = useState([]);
     const [captionArray,setCaptionArray] = useState([]);
 
     useEffect(()=>{
@@ -31,7 +31,7 @@ const UploaderPage = () => {
             
 			if(allOk){
                 const filesArray = fA.map((file) => URL.createObjectURL(file));
-                setfa(fA);
+                setfa((prevImages) => prevImages.concat(fA));
                 setSelectedFiles((prevImages) => prevImages.concat(filesArray));
                 fA.map(
                     (file) => URL.revokeObjectURL(file) // avoid memory leak
@@ -118,7 +118,6 @@ const UploaderPage = () => {
 		});
 	};
 
-    
 
     return ( 
       <div className="uploaderPage">
@@ -141,7 +140,7 @@ const UploaderPage = () => {
             </form>
             
       </div>
-    );
+    ); 
 }
  
 export default UploaderPage;

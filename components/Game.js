@@ -3,7 +3,7 @@ import {  useState } from "react";
 import ImageBox from "./ImageBox";
 import eloRank from "../utils/elo";
 
-const Game = ({imageArray,postId}) => {
+const Game = ({imageArray,postId,setShowlist}) => {
 
     const [activeIndex,setActiveIndex] = useState([0,1]);
 
@@ -50,7 +50,7 @@ const Game = ({imageArray,postId}) => {
                         imageArray
                     })
                 }).then(res =>{
-                    console.log(res);
+                    setShowlist(true);
                 })
             }
         }catch(err){
@@ -65,7 +65,7 @@ const Game = ({imageArray,postId}) => {
     return ( 
         <Box  display='flex' h='80vh' flexDirection='column' alignItems='center' justifyContent='space-around' >
             <Text maxH={{base:'10vh',lg:'20vh'}} fontSize={{base:'sm',lg:'md'}}  textAlign='center' >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, quam dolor aliquid deleniti laboriosam adipisci veniam dignissimos laborum, at incidunt omnis nesciunt nulla molestias ipsa neque autem? Facere, fugit inventore?</Text>
-           <Box overflow='hidden' onClick={HandleSelect} w={{lg:'70vw', base:'100vw'}} display='flex' flexDirection={{base:'column',lg:'row'}} alignItems='center' justifyContent='center'> 
+           <Box overflow='hidden'  w={{lg:'70vw', base:'100vw'}} display='flex' flexDirection={{base:'column',lg:'row'}} alignItems='center' justifyContent='center'> 
                {
                    imageArray.map((value,index)=>
                    isActive(index) && (
