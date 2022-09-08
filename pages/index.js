@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Divider } from "@chakra-ui/react"
 import Container from "../components/Container"
 import Content from "../components/Content"
+import LandingPage from "../components/LandingPage";
 
 
 export const getStaticProps = async () => {
@@ -17,12 +18,13 @@ export default function Home(props) {
   
 
   return (
-      <Container>
-        <Box display='flex' alignItems='center' justifyContent='center' >
-            <Content data={props.data}/>
-        </Box>
+      // <Container>
+      //   <Box display='flex' alignItems='center' justifyContent='center' >
+      //       <Content data={props.data}/>
+      //   </Box>
         
-      </Container>
+      // </Container>
+      <LandingPage />
   )
 }
 
