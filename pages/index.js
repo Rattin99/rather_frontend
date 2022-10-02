@@ -1,30 +1,27 @@
-import { Box, Divider } from "@chakra-ui/react"
+import { useRouter } from "next/router";
+import { useContext } from "react";
+import LandingPage from "../components/LandingPage";
+import { UserContext } from "../utils/UserContext";
+import { Box } from "@chakra-ui/react"
 import Container from "../components/Container"
 import Content from "../components/Content"
-import LandingPage from "../components/LandingPage";
 
 
-export const getStaticProps = async () => {
+export default function Home() {
 
-  const data = await fetch("http://localhost:5000/posts").then((respond) => respond.json())
-  return {
-    props: { data }
-  };
-};
+  const {user,setUser} = useContext(UserContext)
 
-
-
-export default function Home(props) {
   
+  if(user) return (
+    <Container>
+      <Box display='flex' alignItems='center' justifyContent='center' >
+          <Content/>
+      </Box>
+    </Container>
+  )
 
-  return (
-      // <Container>
-      //   <Box display='flex' alignItems='center' justifyContent='center' >
-      //       <Content data={props.data}/>
-      //   </Box>
-        
-      // </Container>
-      <LandingPage />
+  if(!user) return (
+    <LandingPage />
   )
 }
 

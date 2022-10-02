@@ -12,7 +12,7 @@ const LandingPage = () => {
             </Box>
             <Box height="100%" width="50%" >
                 <Login />
-                <Text color="white" display="flex" flexDir="column" alignItems="center" >
+                <Text color="black" display="flex" flexDir="column" alignItems="center" >
                     dont have an account yet? ask your friends for an invite and signup
                 </Text>
                 <Signup />

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ChakraProvider, ColorModeProvider, useColorMode } from '@chakra-ui/react'
 import customTheme from '../styles/theme'
 import { Global, css } from '@emotion/react'
 import { prismLightTheme, prismDarkTheme } from '../styles/prism'; 
 import '../styles/style.css'; 
+import { UserContext } from '../utils/UserContext';
 
 
 const GlobalStyle = ({ children }) => {
@@ -38,6 +39,8 @@ const GlobalStyle = ({ children }) => {
 }
 
 function MyApp({ Component, pageProps }) {
+
+  const [user,setUser] = useState(null)
   return (
     <ChakraProvider resetCSS theme={customTheme}>
       <ColorModeProvider
@@ -47,7 +50,9 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <GlobalStyle>
-          <Component {...pageProps} />
+          <UserContext.Provider value={{user,setUser}}>
+            <Component {...pageProps} />
+          </UserContext.Provider>
         </GlobalStyle>
       </ColorModeProvider>
     </ChakraProvider>

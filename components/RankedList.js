@@ -9,14 +9,16 @@ const RankedList = ({postId}) => {
     const [info,setInfo] = useState({post_visits:12,post_ranked_by:12})
     
     useEffect( () =>{
-       fetch(`http://localhost:5000/get/rankedlist/${postId}`).then((res) => {
+       const controller = new AbortController();
+       const signal = controller.signal;
+
+       fetch(`http://localhost:5000/get/rankedlist/${postId}`,{signal}).then((res) => {
         res.json().then((res) => {
             setRankedArray(res[0])
             setInfo(res[2][0])
         })})
-       
-        
 
+        return () => controller.abort();
     },[postId])
 
    
