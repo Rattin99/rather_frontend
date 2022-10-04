@@ -4,6 +4,7 @@ import { useState,useEffect, useContext } from 'react';
 import { useRouter  } from 'next/router';
 import RankedList from '../../components/RankedList';
 import { UserContext } from '../../utils/UserContext';
+import { Spinner } from '@chakra-ui/react';
 
 
 
@@ -13,18 +14,50 @@ const Compare = () => {
   const id = router.query.id;
     
   const [showlist,setShowlist] = useState(false);
+  const [spin,setSpin] = useState(true)
+
+  const check = async (signal) => {
+    const response = await fetch(`http://localhost:5000/check/${user}/${id}`,{signal})
+    const data = await response.json();
+
+   if(data.length > 0){
+      	if(data[0].if_checked == 1) setShowlist(true)
+   }
+
+   setSpin(false)
+  }
 
 
  useEffect(() => {
   if(!user) router.push('/')
  })
-      
-  return( 
-        <Container> 
-            {!showlist && (<Game setShowlist = {setShowlist} postId = {id} />)}
-            {showlist && <RankedList postId = {id} />}
-        </Container>
-     );
+
+ useEffect(() =>{
+  const controller = new AbortController()
+  const signal = controller.signal
+  check(signal)
+
+  return () => controller.abort();
+ },[])
+
+ 
+ if(spin) return (
+  <Container>
+    <Spinner/>
+  </Container>
+ )
+ if(showlist && !spin) return(
+  <Container>
+    <RankedList postId={id} />
+  </Container>
+ )
+
+ if(!showlist && !spin) return(
+  <Container>
+    <Game setShowlist={setShowlist} postId = {id} />
+  </Container>
+ )
+
 }
  
 export default Compare;

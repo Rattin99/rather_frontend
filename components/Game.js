@@ -62,7 +62,9 @@ const Game = ({ postId, setShowlist }) => {
             }
 
             if (index1 == l || index2 == l) {
-                fetch(`http://localhost:5000/post/rank/${postId}`, {
+                
+
+                fetch(`http://localhost:5000/post/rank/${postId}/${user}`, {
                     method: 'POST',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ imageArray: imgArray })
