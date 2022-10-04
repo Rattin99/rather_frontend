@@ -18,7 +18,7 @@ const Signup = () => {
             body: JSON.stringify({email,password,invite})
         })
 
-        response.json().then(e => console.log(e)).catch(err => console.log(err))
+        response.json().then(e => console.log('signup successfull')).catch(err => console.log(err))
        
         
     }

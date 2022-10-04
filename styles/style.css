@@ -26,7 +26,7 @@ html {
 }
 
 .uploaderPage {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .uplform {
@@ -39,7 +39,7 @@ html {
 .uploads {
   margin: 5px;
   width: 90%;
-  height: 68vh;
+  height: 50vh;
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
@@ -94,8 +94,8 @@ html {
 }
 
 .ranked_image{
-  width: 200px;
-  height: 300px;
+  max-width: 200px;
+  max-height: 300px;
   object-fit: contain;
 }
 

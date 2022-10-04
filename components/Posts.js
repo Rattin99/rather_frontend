@@ -24,10 +24,10 @@ const Posts = () => {
 
   return (
     <>
-    {posts.map((data) => (
+    {posts.map((data,index) => (
             <Link href={'/post/'+ data.post_id} key= {data.post_id}>
               <a>
-                <Post/>
+                <Post title = {posts[index].title} post_text = {posts[index].post_text} />
               </a>
             </Link>
           ))

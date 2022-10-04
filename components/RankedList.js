@@ -1,3 +1,4 @@
+import { Box,Text,Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 
@@ -6,7 +7,7 @@ import { useEffect, useState } from "react";
 const RankedList = ({postId}) => {
 
     const [rankedArraay,setRankedArray] = useState([])
-    const [info,setInfo] = useState({post_visits:12,post_ranked_by:12})
+    const [info,setInfo] = useState({post_visits:0,post_ranked_by:0})
     
     useEffect( () =>{
        const controller = new AbortController();
@@ -38,7 +39,10 @@ const RankedList = ({postId}) => {
             {rankedArraay.map((value,index) => (
                 <div className="ranked_item" key={index}> 
                     <h1 className="rank">{index+1}</h1>
-                    <img className="ranked_image" src={value.image_url}  />
+                    <Box margin='10px'>
+                        <Image className="ranked_image" src={value.image_url}  />
+                        <Text>{value.caption}</Text>
+                    </Box>
                 </div>
             ))}
         </div>

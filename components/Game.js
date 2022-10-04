@@ -6,15 +6,21 @@ import { UserContext } from "../utils/UserContext";
 
 const Game = ({ postId, setShowlist }) => {
     const [imgArray, setArray] = useState();
+    const [post_text,setPost_text] = useState('')
     const [activeIndex, setActiveIndex] = useState([0, 1]);
 
     const { user } = useContext(UserContext)
 
     const getimages = async (signal) => {
         const res = await fetch(`http://localhost:5000/urls/${postId}`, { signal });
-        const images = await res.json();
+        const data = await res.json();
+        const images = data[0]
+        const posttext = data[1][0].post_text;
+
+        console.log(posttext)
 
         setArray(images)
+        setPost_text(posttext)
     }
 
     useEffect(() => {
@@ -81,7 +87,7 @@ const Game = ({ postId, setShowlist }) => {
 
     return (
         <Box display='flex' h='80vh' flexDirection='column' alignItems='center' justifyContent='space-around' >
-            <Text maxH={{ base: '10vh', lg: '20vh' }} fontSize={{ base: 'sm', lg: 'md' }} textAlign='center' >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, quam dolor aliquid deleniti laboriosam adipisci veniam dignissimos laborum, at incidunt omnis nesciunt nulla molestias ipsa neque autem? Facere, fugit inventore?</Text>
+            <Text maxH={{ base: '10vh', lg: '20vh' }} fontSize={{ base: 'sm', lg: 'md' }} textAlign='center' >{post_text}</Text>
             <Box overflow='hidden' w={{ lg: '70vw', base: '100vw' }} display='flex' flexDirection={{ base: 'column', lg: 'row' }} alignItems='center' justifyContent='center'>
                 {
                     imgArray && imgArray.map((value, index) =>

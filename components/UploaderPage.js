@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Input, Textarea } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { uploadFile,HandleUpload } from "../firebase";
@@ -10,6 +10,8 @@ const UploaderPage = () => {
     const [ selectedFiles, setSelectedFiles ] = useState([]);
     const [fa,setfa] = useState([]);
     const [captionArray,setCaptionArray] = useState([]);
+    const [title,setTitle] = useState(' ');
+    const [text,setText] = useState(' ');
 
     useEffect(()=>{
         setCaptionArray(new Array(selectedFiles.length))
@@ -54,6 +56,18 @@ const UploaderPage = () => {
         });
         
     }
+
+    const titleChangeHandler = (e) => {
+        const value = e.target.value;
+
+        setTitle(value)
+    }
+
+    const textChangeHandler = (e) => {
+        const value = e.target.value;
+
+        setText(value)
+    }
     
 
     const color = {
@@ -68,7 +82,8 @@ const UploaderPage = () => {
 
         const data = {
             postid,
-            title: 'title',
+            title: title,
+            text,
             images: []
         };
 
@@ -131,6 +146,8 @@ const UploaderPage = () => {
            </Box>
            
             <form className="uplform" onSubmit={submitHandler}>
+                <Input onChange={titleChangeHandler} placeholder="title" size='md' margin='10' width='50%' />
+                <Textarea onChange={textChangeHandler} placeholder="post text" width="50%" />
                 <div className="uploads">
                 {
                     renderPhotos(selectedFiles)
