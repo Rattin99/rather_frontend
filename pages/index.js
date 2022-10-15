@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useContext } from "react";
 import LandingPage from "../components/LandingPage";
 import { UserContext } from "../utils/UserContext";

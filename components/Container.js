@@ -73,7 +73,7 @@ const Container = ({ children, setUpload }) => {
                   <Link href='/' >
                     <a>
                         <Text onClick={handleRatherClick} color={color[colorMode]} fontSize="3xl">
-                            .rather
+                            .sustmash
                         </Text>
                     </a>
                   </Link>

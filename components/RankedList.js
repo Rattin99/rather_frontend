@@ -41,7 +41,7 @@ const RankedList = ({postId}) => {
                     <h1 className="rank">{index+1}</h1>
                     <Box margin='10px'>
                         <Image className="ranked_image" src={value.image_url}  />
-                        <Text>{value.caption}</Text>
+                        <Text align='center'>{value.caption}</Text>
                     </Box>
                 </div>
             ))}

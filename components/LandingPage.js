@@ -8,7 +8,7 @@ const LandingPage = () => {
     return ( 
         <Box height="100vh" width="100vw" display="flex">
             <Box bgColor="tomato"  height="100%" width="50%" display="flex" flexDir="column" alignItems="center" justifyContent="center">
-                <Text fontSize ="6xl" color="white">.rather</Text>
+                <Text fontSize ="6xl" color="white">.sustmash</Text>
             </Box>
             <Box height="100%" width="50%" >
                 <Login />

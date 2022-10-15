@@ -17,8 +17,6 @@ const Game = ({ postId, setShowlist }) => {
         const images = data[0]
         const posttext = data[1][0].post_text;
 
-        console.log(posttext)
-
         setArray(images)
         setPost_text(posttext)
     }
