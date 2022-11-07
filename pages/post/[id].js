@@ -5,6 +5,7 @@ import { useRouter  } from 'next/router';
 import RankedList from '../../components/RankedList';
 import { UserContext } from '../../utils/UserContext';
 import { Spinner } from '@chakra-ui/react';
+import { serverUrl } from '../../utils/url';
 
 
 
@@ -17,7 +18,7 @@ const Compare = () => {
   const [spin,setSpin] = useState(true)
 
   const check = async (signal) => {
-    const response = await fetch(`http://localhost:5000/check/${user}/${id}`,{signal})
+    const response = await fetch(`${serverUrl}/check/${user}/${id}`,{signal})
     const data = await response.json();
 
    if(data.length > 0){

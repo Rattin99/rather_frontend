@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { uploadFile,HandleUpload } from "../firebase";
 import {v1 as uuid} from 'uuid';
+import { serverUrl } from "../utils/url";
 
 const UploaderPage = () => {
 
@@ -89,7 +90,7 @@ const UploaderPage = () => {
 
 
         try{
-            fetch('http://localhost:5000/post',{
+            fetch(`${serverUrl}/post`,{
                 method: 'POST',
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(data)
@@ -103,7 +104,7 @@ const UploaderPage = () => {
         fa.map((value,index)=>{
             uploadFile(value,(downloadURL)=>{
                 try{
-                    fetch(`http://localhost:5000/post/url/${postid}`,{
+                    fetch(`${serverUrl}/post/url/${postid}`,{
                         method: 'POST',
                         headers: {"Content-Type":"application/json"},
                         body: JSON.stringify({

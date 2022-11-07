@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import ImageBox from "./ImageBox";
 import eloRank from "../utils/elo";
 import { UserContext } from "../utils/UserContext";
+import { serverUrl } from "../utils/url";
 
 const Game = ({ postId, setShowlist }) => {
     const [imgArray, setArray] = useState();
@@ -12,13 +13,15 @@ const Game = ({ postId, setShowlist }) => {
     const { user } = useContext(UserContext)
 
     const getimages = async (signal) => {
-        const res = await fetch(`http://localhost:5000/urls/${postId}`, { signal });
+        const res = await fetch(`${serverUrl}/urls/${postId}`, { signal });
         const data = await res.json();
         const images = data[0]
         const posttext = data[1][0].post_text;
 
         setArray(images)
         setPost_text(posttext)
+
+        console.log(data)
     }
 
     useEffect(() => {
@@ -68,7 +71,7 @@ const Game = ({ postId, setShowlist }) => {
             if (index1 == l || index2 == l) {
                 
 
-                fetch(`http://localhost:5000/post/rank/${postId}/${user}`, {
+                fetch(`${serverUrl}/post/rank/${postId}/${user}`, {
                     method: 'POST',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ imageArray: imgArray })
@@ -90,7 +93,10 @@ const Game = ({ postId, setShowlist }) => {
                 {
                     imgArray && imgArray.map((value, index) =>
                         isActive(index) && (
-                            <ImageBox handleselect={(e) => HandleSelect(e)} key={index} src={value.image_url} index={index} />
+                           <Box key={index} display = "flex" flexDirection="column" alignItems="center" justifyContent="center">
+                                <ImageBox handleselect={(e) => HandleSelect(e)} key={index} src={value.image_url} index={index} />
+                                <Text align="center">{value.caption}</Text>
+                           </Box>
                         )
                     )
                 }

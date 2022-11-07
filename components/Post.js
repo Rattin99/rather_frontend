@@ -10,7 +10,7 @@ const Post = ({title,post_text}) => {
     }
 
     return ( 
-        <Box margin='20px 0px' borderWidth='1px' borderRadius='5px' borderColor={color[colorMode]} padding='10px'>
+        <Box   margin='20px auto' borderWidth='1px'  borderRadius='5px' borderColor={color[colorMode]} padding='10px' >
            
            <Text textAlign='center' color={color[colorMode]}>
               {title}

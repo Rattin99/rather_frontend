@@ -1,13 +1,19 @@
 html {
   min-width: 356px;
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
-  overflow-y: hidden;
 }
+
+
+
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
 }
+
+.infinite{
+  width: 100%;
+  overflow-y:scroll;
+}
+
 
 #files[type="file"] {
   display: none;
@@ -15,6 +21,10 @@ html {
 
 .label {
   font-size: 10em;
+}
+
+img{
+  object-fit: contain;
 }
 
 @media (max-width: 500px) {

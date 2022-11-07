@@ -1,5 +1,6 @@
 import { Box,Text,Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { serverUrl } from "../utils/url";
 
 
 
@@ -13,7 +14,7 @@ const RankedList = ({postId}) => {
        const controller = new AbortController();
        const signal = controller.signal;
 
-       fetch(`http://localhost:5000/get/rankedlist/${postId}`,{signal}).then((res) => {
+       fetch(`${serverUrl}/get/rankedlist/${postId}`,{signal}).then((res) => {
         res.json().then((res) => {
             setRankedArray(res[0])
             setInfo(res[2][0])
