@@ -13,7 +13,7 @@ import { createBreakpoints } from '@chakra-ui/theme-tools';
  const breakpoints = createBreakpoints({
     sm: "20em",
     md: "40em",
-    lg: "500px",
+    lg: "48em",
 })
 
 const overrides = {

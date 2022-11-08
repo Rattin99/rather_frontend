@@ -20,7 +20,7 @@ const LandingPage = () => {
                     <Text fontSize ="6xl" color="white">.sustmash</Text>
                 </Box>
            </Hide>
-            <Box height="100%" width={{base:"100%",lg:"50%"}} >
+            <Box height="100%"  width={{base:"100%",lg:"50%"}} >
                 <Login />
                 <Text align="center" color={color[colorMode]} display="flex" flexDir="column" alignItems="center" >
                     dont have an account yet? ask your friends for an invite and signup
@@ -31,6 +31,6 @@ const LandingPage = () => {
      );
 }
 
-// display="flex" flexDirection="column"  alignItems="center" justifyContent="center"
+
  
 export default LandingPage;
