@@ -21,7 +21,7 @@ const Game = ({ postId, setShowlist }) => {
         setArray(images)
         setPost_text(posttext)
 
-        console.log(data)
+       
     }
 
     useEffect(() => {
@@ -95,7 +95,7 @@ const Game = ({ postId, setShowlist }) => {
                         isActive(index) && (
                            <Box key={index} display = "flex" flexDirection="column" alignItems="center" justifyContent="center">
                                 <ImageBox handleselect={(e) => HandleSelect(e)} key={index} src={value.image_url} index={index} />
-                                <Text align="center">{value.caption}</Text>
+                                <Text margin={{ base: '2px', lg: '10px' }} align="center">{value.caption}</Text>
                            </Box>
                         )
                     )

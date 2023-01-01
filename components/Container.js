@@ -84,11 +84,6 @@ const Container = ({ children, setUpload }) => {
                             <IconButton  margin='3px' icon={<SearchIcon />} color={color[colorMode]} />
                         </a>
                     </Link>
-                   <Link href="/Uploader">
-                        <a >
-                            <IconButton  margin='3px' icon={<AddIcon />} color={color[colorMode]} />
-                        </a>
-                   </Link>
                     <DarkModeSwitch />
                 </Box>
                 
