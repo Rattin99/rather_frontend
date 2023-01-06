@@ -39,7 +39,7 @@ const Login = () => {
     }
 
     return ( 
-        <Box width="100%" height="45%" display="flex" flexDir="column" alignItems="center" justifyContent="center" >
+        <Box width="100%" height="35%" display="flex" flexDir="column" alignItems="center" justifyContent="center" >
             <Input color={color[colorMode]} onChange={e => setEmail(e.target.value)} width="50%" margin="10px"  placeholder="email" type='email' /> 
             <Input color={color[colorMode]} onChange={e => setPassword(e.target.value)} width="50%" margin="10px"  placeholder="password" type="password" />
             <Text color={color[colorMode]}>{status}</Text>
