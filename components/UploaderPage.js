@@ -132,7 +132,7 @@ const UploaderPage = () => {
 			return (
                 <div className="upldiv" key={index}>
                     <img className="uplimg" src={photo} alt=""  />
-                    <input className="caption_input"  onChange={changeHandler}  type='text' defaultValue=' ' index={index} />
+                    <input className="caption_input"  onChange={changeHandler}  type='text' defaultValue=' '  />
                 </div>
             )
 		});
