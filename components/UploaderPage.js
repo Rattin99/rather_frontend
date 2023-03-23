@@ -4,6 +4,7 @@ import { useColorMode } from "@chakra-ui/react";
 import { uploadFile,HandleUpload } from "../firebase";
 import {v1 as uuid} from 'uuid';
 import { serverUrl } from "../utils/url";
+import Router from "next/router";
 
 const UploaderPage = () => {
 
@@ -120,6 +121,9 @@ const UploaderPage = () => {
             });
 
         })
+
+        Router.push('/');
+
     }
 
 

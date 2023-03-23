@@ -45,12 +45,7 @@ const Container = ({ children, setUpload }) => {
         top: 0;
         backdrop-filter: saturate(180%) blur(20px);
         transition: height .5s, line-height .5s;
-        `
-
-   
-    const handleRatherClick = () => {
-        
-    }
+        `; 
 
     return (
         <>
@@ -72,7 +67,7 @@ const Container = ({ children, setUpload }) => {
                 <Box >
                   <Link href='/' >
                     <a>
-                        <Text onClick={handleRatherClick} color={color[colorMode]} fontSize="3xl">
+                        <Text color={color[colorMode]} fontSize="3xl">
                             .sustmash
                         </Text>
                     </a>
@@ -82,6 +77,11 @@ const Container = ({ children, setUpload }) => {
                     <Link href = "/SearchPage">
                         <a>
                             <IconButton  margin='3px' icon={<SearchIcon />} color={color[colorMode]} />
+                        </a>
+                    </Link>
+                    <Link href = "/Uploader">
+                        <a>
+                            <IconButton  margin='3px' icon={<AddIcon/>} color={color[colorMode]} />
                         </a>
                     </Link>
                     <DarkModeSwitch />
